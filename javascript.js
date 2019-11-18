@@ -107,14 +107,22 @@ function gameEnd() {
   // show the results
   // ask for name
   var input = document.createElement("input");
-    input.textContent = "";
+    input.textContent = inputField;
+    var inputField = input.setAttribute("id", "inputField");
     inputArea.appendChild(input);
   var nameBtn = document.createElement("button");
     nameBtn.textContent = "Submit Name";
     nameArea.appendChild(nameBtn);
   nameBtn.addEventListener("click", function() {
     // save in local storage
-    localStorage.getItem("name", inputArea);
+    var scoreToSave = [{"initial": inputField, "score": secondsLeft}];
+    scoreToSave.push();
+    var scoreToSaveStringified = JSON.stringify(scoreToSave);
+    localStorage.setItem("name", scoreToSaveStringified);
+    console.log(scoreToSave);
+    localStorage.setItem("score", secondsLeft);
+    console.log(secondsLeft);
+    localStorage.getItem("name", inputField);
     console.log(inputArea)
     localStorage.getItem("secondsleft", secondsLeft);
     console.log(secondsLeft);
