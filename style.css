@@ -1,16 +1,61 @@
 body {
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
 };
-#container {
-    margin: 0 auto;
+.col-md {
+    margin: 20px auto;
     padding: 20px;
+    background-color: black;
 }
 h1 {
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
-#Timer {
-    float: right;
-    padding: 20px;
+.btn-primary {
+    margin: 0 auto;
+    padding: 10px;
+    background-color: purple;
+    border-color: purple;
+    text-align: center;
 };
+#highScoreLink {
+    color: purple;
+}
+ul {
+    margin: 0 auto;
+};
+#game {
+    margin: 0 auto;
+    text-align: center;
+};
+#Timer {
+    margin: 20px auto;
+    text-align: center;
+    
+};
+#input {
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+};
+#inputField {
+    margin: 10px auto;
+    padding: 20px;
+    text-align: center;
+}
+#nameButton {
+    margin-top: 20px;
+};
+p {
+    margin: 10px auto;
+    text-align: center;
+};
+button {
+    padding: 10px;
+    margin: 0 auto;
+    background-color: purple;
+}
+#high-score {
+    margin: 0 auto;
+}

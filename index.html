@@ -6,30 +6,37 @@
     <title>Code Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="style" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id="container">
-    <h1>Coding Quiz Challenge</h1>
-        <div id="game">
-
-            <button type="button" class="btn btn-primary btn-lg" id="startButton">Start Quiz</button>
+    <div class="col-md" id="container">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="High-score.html" id="highScoreLink">High Score</a>
+            </li>
+        </ul>
+        <div class="col-md">
+            <h1>Coding Quiz Challenge</h1>
         </div>
-        <div id="Timer">
-
+        <div class="col-md">
+            <div id="Timer">
+            </div>
         </div>
-        <div id="High-Score">
-
+        <div class="col-md">
+            <div id="game">
+                <button type="button" class="btn btn-primary btn-lg" id="startButton">Start Quiz</button>
+            </div>
         </div>
-        <div id="input">
-
+        <div class="col-md">
+            <div id="input">
+            </div>
         </div>
-        <div id="nameButton">
-
+        <div class="col-md">
+            <div id="nameButton">
+            </div>
         </div>
     </div>
-
     <script src="questions.js"></script>
     <script src="javascript.js"></script>
 </body>

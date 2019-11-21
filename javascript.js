@@ -30,7 +30,8 @@ function Countdown() {
   secondsLeft--;
   console.log("secondsLeft", secondsLeft);
   // show  secondsleft on the DOM
-  showTimer.textContent = secondsLeft;
+  showTimer.textContent = "Time: " + secondsLeft;
+  showTimer.setAttribute("style", "color:purple");
   console.log(showTimer);
 
   if (secondsLeft < 1) {
@@ -58,6 +59,7 @@ function nextQuestion() {
   } else {
     console.log("ELSE");
     var questionEl = document.createElement("p");
+    questionEl.setAttribute("style", "margin-top: 20px");
     questionEl.textContent = questions[currentQ].title;
     areagame.appendChild(questionEl);
 
@@ -67,6 +69,7 @@ function nextQuestion() {
       choice.textContent = questions[currentQ].choices[i];
       choice.setAttribute("class", "choices");
       choice.setAttribute("value", questions[currentQ].choices[i]);
+      choice.setAttribute("style", "margin:0 auto; color:white; background-color:purple; text-align:center;");
       choice.onclick = verify;
       areagame.appendChild(choice);
     }
@@ -107,28 +110,38 @@ function gameEnd() {
   // show the results
   // ask for name
   var input = document.createElement("input");
-    input.textContent = inputField;
-    var inputField = input.setAttribute("id", "inputField");
-    inputArea.appendChild(input);
+  input.textContent = inputField;
+  input.setAttribute("style", "margin:0 auto; text-align:center;");
+  var inputField = input.setAttribute("id", "inputField");
+  inputArea.appendChild(input);
   var nameBtn = document.createElement("button");
-    nameBtn.textContent = "Submit Name";
-    nameArea.appendChild(nameBtn);
+  nameBtn.textContent = "Submit Name";
+  nameBtn.setAttribute("style", "background-color:purple; color:white; padding:20px;")
+  nameArea.appendChild(nameBtn);
   nameBtn.addEventListener("click", function() {
     // save in local storage
-    var scoreToSave = [{"initial": inputField, "score": secondsLeft}];
-    scoreToSave.push();
-    var scoreToSaveStringified = JSON.stringify(scoreToSave);
-    localStorage.setItem("name", scoreToSaveStringified);
-    console.log(scoreToSave);
-    localStorage.setItem("score", secondsLeft);
-    console.log(secondsLeft);
-    localStorage.getItem("name", inputField);
-    console.log(inputArea)
-    localStorage.getItem("secondsleft", secondsLeft);
-    console.log(secondsLeft);
+    alert("Score is now saved! Go to High Scores to view your score");
+    var HighScore = JSON.parse(localStorage.getItem("High Scores")) || [];
+    console.log(HighScore);
 
-  })
-    
+    var inputName = document.getElementById("inputField").value;
+    var scoreToSave = { name: inputName, score: secondsLeft };
+    HighScore.push(scoreToSave);
+
+    var HighScoreStringified = JSON.stringify(HighScore);
+
+    localStorage.setItem("High Scores", HighScoreStringified);
+    console.log(HighScore);
+
+    var highScoreArea = document.querySelector("#high-score");
+    console.log(highScoreArea);
+    var HighScoreList = document.createElement("li");
+    HighScoreList.textContent = HighScore;
+    highScoreArea.appendChild(HighScoreList);
+
+    localStorage.getItem(HighScore);
+
+  });
 }
 
 // function to show the user if their answer is correct or not

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>High Scores!</h1>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Quiz</a>
+            </li>
+        </ul>
+        <div>
+            <ul id="high-score"></ul>
+
+        </div>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="questions.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+    <script type="text/javascript">
+
+    
+
+        var HighScore = JSON.parse(localStorage.getItem("High Scores"));
+        for ( var i = 0; i < HighScore.length; i++) {
+            var text = HighScore[i].name + "-" + HighScore[i].score
+
+            console.log(HighScore);
+            var highScoreArea = document.querySelector("#high-score");
+            console.log(highScoreArea);
+            var HighScoreList = document.createElement("li");
+            HighScoreList.textContent = text;
+            highScoreArea.appendChild(HighScoreList);
+        };
+
+
+    </script>
+</body>
+
+</html>
