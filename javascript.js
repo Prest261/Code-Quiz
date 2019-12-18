@@ -10,138 +10,146 @@
 
 console.log(questions);
 
-var areagame = document.querySelector("#game");
-var showTimer = document.querySelector("#Timer");
-var showHighScore = document.querySelector("#High-Score");
-var startButton = document.querySelector("#startButton");
-var inputArea = document.querySelector("#input");
-var nameArea = document.querySelector("#nameButton");
+var areagame = document.querySelector('#game');
+var showTimer = document.querySelector('#Timer');
+var showHighScore = document.querySelector('#High-Score');
+var startButton = document.querySelector('#startButton');
+var inputArea = document.querySelector('#input');
+var nameArea = document.querySelector('#nameButton');
 var secondsLeft = 90;
 var currentQ = 0;
 var timer;
 var score = 0;
 
 // 1) when start button is clicked first question begins (addeventlistener)
-startButton.addEventListener("click", quizQuestions);
+startButton.addEventListener('click', quizQuestions);
 
 // & timer starts countdown (90 seconds)
 
 function Countdown() {
-  secondsLeft--;
-  console.log("secondsLeft", secondsLeft);
-  // show  secondsleft on the DOM
-  showTimer.textContent = "Time: " + secondsLeft;
-  showTimer.setAttribute("style", "color:purple");
-  console.log(showTimer);
+	secondsLeft--;
+	console.log('secondsLeft', secondsLeft);
+	// show  secondsleft on the DOM
+	showTimer.textContent = 'Time: ' + secondsLeft;
+	showTimer.setAttribute('style', 'color:#ffffff');
+	showTimer.className('timer');
+	console.log(showTimer);
 
-  if (secondsLeft < 1) {
-    // then end quiz
-    gameEnd();
-  }
+	if (secondsLeft < 1) {
+		// then end quiz
+		gameEnd();
+	}
 }
 
 // function to loop through the array of questions
 
 function quizQuestions() {
-  console.log("start");
-  timer = setInterval(Countdown, 1000);
+	console.log('start');
+	timer = setInterval(Countdown, 1000);
 
-  nextQuestion();
+	nextQuestion();
 }
 
 function nextQuestion() {
-  console.log("next question", currentQ, questions.length);
+	console.log('next question', currentQ, questions.length);
 
-  areagame.innerHTML = "";
-  if (currentQ >= questions.length) {
-    console.log("game end");
-    gameEnd();
-  } else {
-    console.log("ELSE");
-    var questionEl = document.createElement("p");
-    questionEl.setAttribute("style", "margin-top: 20px");
-    questionEl.textContent = questions[currentQ].title;
-    areagame.appendChild(questionEl);
+	areagame.innerHTML = '';
+	if (currentQ >= questions.length) {
+		console.log('game end');
+		gameEnd();
+	} else {
+		console.log('ELSE');
+		var questionEl = document.createElement('p');
+		questionEl.setAttribute('style', 'margin: 20px auto');
+		questionEl.textContent = questions[currentQ].title;
+		areagame.appendChild(questionEl);
 
-    for (var i = 0; i < questions[currentQ].choices.length; i++) {
-      console.log("i", i);
-      var choice = document.createElement("button");
-      choice.textContent = questions[currentQ].choices[i];
-      choice.setAttribute("class", "choices");
-      choice.setAttribute("value", questions[currentQ].choices[i]);
-      choice.setAttribute("style", "margin:0 auto; color:white; background-color:purple; text-align:center;");
-      choice.onclick = verify;
-      areagame.appendChild(choice);
-    }
+		for (var i = 0; i < questions[currentQ].choices.length; i++) {
+			console.log('i', i);
+			var choice = document.createElement('button');
+			choice.textContent = questions[currentQ].choices[i];
+			choice.setAttribute('class', 'btn btn-secondary');
+			choice.setAttribute('value', questions[currentQ].choices[i]);
+			choice.setAttribute(
+				'style',
+				'margin:20 auto; color:white; background-color:darkslateblue; text-align:center;'
+			);
+			choice.onclick = verify;
+			areagame.appendChild(choice);
+		}
 
-    // show question  questions[currentQ]
-    // show responses
-    // onclick to the responses
-  }
+		// show question  questions[currentQ]
+		// show responses
+		// onclick to the responses
+	}
 }
 function verify() {
-  console.log(this);
-  console.log(this.value);
+	console.log(this);
+	console.log(this.value);
 
-  var answer = questions[currentQ].answer;
-  console.log(answer);
-  if (this.value === answer) {
-    this.setAttribute("style", "color:white; background-color:green");
-  } else {
-    this.setAttribute("style", "color:white; background-color:red");
-    secondsLeft = secondsLeft - 15;
-    // show the seconds
-  }
+	var answer = questions[currentQ].answer;
+	console.log(answer);
+	if (this.value === answer) {
+		this.setAttribute('style', 'color:white; background-color:green');
+	} else {
+		this.setAttribute('style', 'color:white; background-color:red');
+		secondsLeft = secondsLeft - 15;
+		// show the seconds
+	}
 
-  currentQ++;
-  setTimeout(nextQuestion, 1000);
+	currentQ++;
+	setTimeout(nextQuestion, 1000);
 
-  // if correct
-  // show color
-  // next question
-  // incorrect
-  // show color
-  // reduce seconsleft
-  // next question
+	// if correct
+	// show color
+	// next question
+	// incorrect
+	// show color
+	// reduce seconsleft
+	// next question
 }
 function gameEnd() {
-  // clear the timer
-  clearInterval(timer);
-  // show the results
-  // ask for name
-  var input = document.createElement("input");
-  input.textContent = inputField;
-  input.setAttribute("style", "margin:0 auto; text-align:center;");
-  var inputField = input.setAttribute("id", "inputField");
-  inputArea.appendChild(input);
-  var nameBtn = document.createElement("button");
-  nameBtn.textContent = "Submit Name";
-  nameBtn.setAttribute("style", "background-color:purple; color:white; padding:20px;")
-  nameArea.appendChild(nameBtn);
-  nameBtn.addEventListener("click", function() {
-    // save in local storage
-    alert("Score is now saved! Go to High Scores to view your score");
-    var HighScore = JSON.parse(localStorage.getItem("High Scores")) || [];
-    console.log(HighScore);
+	// clear the timer
+	clearInterval(timer);
+	// show the results
+	// ask for name
+	var input = document.createElement('input');
+	input.textContent = inputField;
+	input.setAttribute('style', 'margin:0 auto; text-align:center;');
+	var inputField = input.setAttribute('id', 'inputField');
+	inputArea.appendChild(input);
+	var nameBtn = document.createElement('button');
+	('');
+	nameBtn.textContent = 'Submit Name';
+	nameBtn.setAttribute('class', 'btn btn-secondary');
+	nameBtn.setAttribute(
+		'style',
+		'color:#ffffff; padding:20px; background-color:darkslateblue'
+	);
+	nameArea.appendChild(nameBtn);
+	nameBtn.addEventListener('click', function() {
+		// save in local storage
+		alert('Score is now saved! Go to High Scores to view your score');
+		var HighScore = JSON.parse(localStorage.getItem('High Scores')) || [];
+		console.log(HighScore);
 
-    var inputName = document.getElementById("inputField").value;
-    var scoreToSave = { name: inputName, score: secondsLeft };
-    HighScore.push(scoreToSave);
+		var inputName = document.getElementById('inputField').value;
+		var scoreToSave = { name: inputName, score: secondsLeft };
+		HighScore.push(scoreToSave);
 
-    var HighScoreStringified = JSON.stringify(HighScore);
+		var HighScoreStringified = JSON.stringify(HighScore);
 
-    localStorage.setItem("High Scores", HighScoreStringified);
-    console.log(HighScore);
+		localStorage.setItem('High Scores', HighScoreStringified);
+		console.log(HighScore);
 
-    var highScoreArea = document.querySelector("#high-score");
-    console.log(highScoreArea);
-    var HighScoreList = document.createElement("li");
-    HighScoreList.textContent = HighScore;
-    highScoreArea.appendChild(HighScoreList);
+		var highScoreArea = document.querySelector('#high-score');
+		console.log(highScoreArea);
+		var HighScoreList = document.createElement('li');
+		HighScoreList.textContent = HighScore;
+		highScoreArea.appendChild(HighScoreList);
 
-    localStorage.getItem(HighScore);
-
-  });
+		localStorage.getItem(HighScore);
+	});
 }
 
 // function to show the user if their answer is correct or not
